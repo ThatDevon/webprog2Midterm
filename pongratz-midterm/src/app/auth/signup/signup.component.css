@@ -1,0 +1,28 @@
+.form-element {
+  margin:10px;
+}
+
+.mx-auto {
+  display:block;
+  width:50vh;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.content-center {
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-5 {
+  padding-top: 10px;
+}
+
+mat-spinner {
+  margin: auto;
+}

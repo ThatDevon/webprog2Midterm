@@ -1,0 +1,53 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-card *ngIf="featuredChamp">
+  <h1>Featured Champion</h1>
+  <h2>{{featuredChamp.name}}</h2>
+  <div class="mx-auto">
+    <a routerLink="/detail/{{featuredChamp.key}}">
+      <img [src]="featuredChamp.icon" class="mx-auto" [alt]="featuredChamp.name">
+    </a>
+  </div>
+  {{featuredChamp.description}}
+</mat-card>
+<br>
+<mat-card *ngIf="!isLoading">
+  <h1>Top 5 {{statTitle}} Champions</h1>
+  <mat-accordion multi="true" *ngIf="champs.length > 0 && !isLoading">
+    <mat-expansion-panel *ngFor="let champ of champs">
+      <mat-expansion-panel-header class="mb-1">
+        {{ champ.name }}
+      </mat-expansion-panel-header>
+      <div class="mx-auto">
+        <a routerLink="/detail/{{champ.key}}">
+          <img [src]="champ.icon" class="mx-auto" [alt]="champ.name">
+        </a>
+      </div>
+      <p>{{ champ.description }}</p>
+      <p>Click on the image to view more details!</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-action-row>
+  <div *ngIf="!isLoading">
+    <button mat-button color="primary" (click)="onFilter('stats.armor')">
+      <strong *ngIf="currentFilter == 'stats.armor'">Armor</strong>
+      <span *ngIf="currentFilter != 'stats.armor'">Armor</span>
+    </button>
+    <button mat-button color="primary" (click)="onFilter('stats.attackdamage')">
+      <strong *ngIf="currentFilter == 'stats.attackdamage'">Damage</strong>
+      <span *ngIf="currentFilter != 'stats.attackdamage'">Damage</span>
+    </button>
+    <button mat-button color="primary" (click)="onFilter('stats.hp')">
+      <strong *ngIf="currentFilter == 'stats.hp'">Health</strong>
+      <span *ngIf="currentFilter != 'stats.hp'">Health</span>
+    </button>
+    <button mat-button color="primary" (click)="onFilter('stats.attackrange')">
+      <strong *ngIf="currentFilter == 'stats.attackrange'">Range</strong>
+      <span *ngIf="currentFilter != 'stats.attackrange'">Range</span>
+    </button>
+    <button mat-button color="primary" (click)="onFilter('stats.movespeed')">
+      <strong *ngIf="currentFilter == 'stats.movespeed'">Speed</strong>
+      <span *ngIf="currentFilter != 'stats.movespeed'">Speed</span>
+    </button>
+  </div>
+  </mat-action-row>
+</mat-card>

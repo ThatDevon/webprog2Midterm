@@ -1,0 +1,38 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<form *ngIf="!isLoading" action="POST" [formGroup]="myForm" (submit)="onSignup(signupForm)" #signupForm="ngForm" class="mx-auto text-center mt-5">
+  <mat-card>
+    <h3 class="mx-auto text-center">Signup</h3>
+
+    <div class="mx-auto">
+      <mat-form-field class="form-element">
+        <input matInput placeholder="username" formControlName="username">
+        <mat-error class="form-error" *ngIf="username.invalid && username.touched" >
+          username must not be empty
+        </mat-error>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field class="form-element">
+        <input matInput type="password" placeholder="password" formControlName="password">
+
+        <mat-hint *ngIf="password.invalid">passwords must contain atleast one letter and a number</mat-hint>
+
+        <mat-error *ngIf="password.invalid && password.touched">
+          passwords must contain atleast one letter and one number
+        </mat-error>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field class="form-element">
+        <input matInput type="password" placeholder="confirm password" formControlName="cpassword" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="myForm.hasError('notSame') && cpassword.touched">passwords must match</mat-error>
+      </mat-form-field>
+
+      <br><br>
+
+      <button mat-raised-button [disabled]="myForm.invalid" class="content-center text-center" color="primary">Submit</button>
+    </div>
+  </mat-card>
+</form>

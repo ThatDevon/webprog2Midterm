@@ -1,0 +1,53 @@
+<h3>Comments</h3>
+<div *ngIf="userIsAuthed">
+  <button color="primary" mat-raised-button (click)="onPost()" class="mb-3">Create Comment</button>
+</div>
+<div *ngIf="!userIsAuthed">
+  <p class="hints">Login to post a comment yourself!</p>
+</div>
+
+
+<div *ngIf="postingComment" class="mb-3">
+  <form method="POST" [formGroup]="myForm" (submit)="postComment(myForm)" class="mx-auto text-center">
+    <mat-card>
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Comment" formControlName="comment">
+        <mat-error *ngIf="comment.invalid && comment.touched">
+          Comment must not be empty
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput formControlName="rating" type="number" placeholder="Rating (1 to 10).">
+        <mat-error *ngIf="rating.invalid && rating.touched">
+          Rating must be a whole number between 1 and 10
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <button type="submit" mat-raised-button [disabled]="myForm.invalid" color="primary">Post</button>
+      <button mat-raised-button color="warn" class="ml-3" (click)="onCancel()">Cancel</button>
+    </mat-card>
+  </form>
+</div>
+
+<div *ngIf="uInputs.length > 0">
+  <div *ngFor="let uInput of uInputs">
+    <mat-card *ngIf="uInput.championName == champion.name" class="mb-3 no-pad">
+      <div>
+        <p class="small-text">{{uInput.username}}</p>
+        <p class="small-text">{{ uInput.rating }} / 10</p>
+        <p class="word-wrap">{{uInput.comment}}</p>
+      </div>
+      <!-- <p class="small-text text-right">{{ uInput.rating }} / 10</p> -->
+      <div *ngIf="userIsAuthed && uInput.username == userId">
+        <button mat-button color="warn" class="go-right" (click)="onDelete(uInput)">Delete</button>
+        <br />
+        <br />
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+<div *ngIf="uInputs.length == 0">
+  <p>No comments found for this champion</p>
+</div>

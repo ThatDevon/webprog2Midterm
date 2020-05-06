@@ -1,0 +1,52 @@
+.nav-styles {
+  text-decoration: none;
+  list-style-type: none;
+  margin-block-start: 5px !important;
+  margin-block-end: 5px !important;
+  padding-inline-start: 5px !important;
+  padding-inline-start: 5px !important;
+}
+
+.hor-li {
+  display: inline-block;
+  width:auto;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.hor-li a {
+  text-decoration: none !important;
+  color:White;
+}
+
+.ul-left {
+  display:inline-block;
+  width:50%;
+  text-align: start;
+
+}
+.ul-right {
+  display:inline-block;
+  width:50%;
+  text-align: end;
+}
+
+.active-link {
+  color:orange !important;
+}
+
+.split-nav {
+  text-align: left;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.right-stuff {
+  padding: 0 14px;
+}
+
+.small-text {
+  color: lightgrey;
+}

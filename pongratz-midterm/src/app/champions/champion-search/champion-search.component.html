@@ -1,0 +1,13 @@
+<div id="search-component">
+  <h4><label for="search-box">Champion Search</label></h4>
+
+  <input #searchBox id="search-box" autocomplete="off" (input)="onSearch(searchBox.value)" />
+
+  <ul class="search-result">
+    <li *ngFor="let champion of champions" >
+      <a (click)="openPage(champion)">
+        {{champion.name}}
+      </a>
+    </li>
+  </ul>
+</div>

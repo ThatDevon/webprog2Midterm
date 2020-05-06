@@ -1,0 +1,43 @@
+<div *ngIf="champion">
+  <mat-card>
+    <img class="mx-auto" src="{{champion.icon}}" />
+    <p class="text-center big-text">{{champion.name}}</p>
+    <p>{{champion.description}}</p>
+    <h1 class="text-center">Base Stats</h1><br/>
+    <table width="50%" class="mx-auto">
+      <tr>
+        <td><b>Armor</b></td>
+        <td class="text-center">{{champion.stats.armor}}</td>
+      </tr>
+      <tr>
+        <td><b>Health</b></td>
+        <td class="text-center">{{champion.stats.hp}}</td>
+      </tr>
+      <tr>
+        <td><b>Mana Pool</b></td>
+        <td class="text-center">{{champion.stats.mp}}</td>
+      </tr>
+      <tr>
+        <td><b>Attack Range</b></td>
+        <td class="text-center">{{champion.stats.attackrange}}</td>
+      </tr>
+      <tr>
+        <td><b>Physical Damage</b></td>
+        <td class="text-center">{{champion.stats.attackdamage}}</td>
+      </tr>
+      <tr>
+        <td><b>Movement Speed</b></td>
+        <td class="text-center">{{champion.stats.movespeed}}</td>
+      </tr>
+    </table>
+  </mat-card>
+</div>
+<br>
+<mat-card>
+  <app-champion-user-input></app-champion-user-input>
+</mat-card>
+<br>
+<mat-card>
+  <app-champion-search></app-champion-search>
+</mat-card>
+<br>

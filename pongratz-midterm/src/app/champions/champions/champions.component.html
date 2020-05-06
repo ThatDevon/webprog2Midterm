@@ -1,0 +1,57 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-card *ngIf="!isLoading">
+  <app-champion-search></app-champion-search>
+</mat-card>
+<br>
+<div *ngIf="!isLoading">
+  <button mat-button color="primary" (click)="changeFilter('stats.armor')">
+    <strong *ngIf="currentFilter == 'stats.armor'">Armor</strong>
+    <span *ngIf="currentFilter != 'stats.armor'">Armor</span>
+  </button>
+  <button mat-button color="primary" (click)="changeFilter('stats.attackdamage')">
+    <strong *ngIf="currentFilter == 'stats.attackdamage'">Damage</strong>
+    <span *ngIf="currentFilter != 'stats.attackdamage'">Damage</span>
+  </button>
+  <button mat-button color="primary" (click)="changeFilter('stats.hp')">
+    <strong *ngIf="currentFilter == 'stats.hp'">Health</strong>
+    <span *ngIf="currentFilter != 'stats.hp'">Health</span>
+  </button>
+  <button mat-button color="primary" (click)="changeFilter('stats.attackrange')">
+    <strong *ngIf="currentFilter == 'stats.attackrange'">Range</strong>
+    <span *ngIf="currentFilter != 'stats.attackrange'">Range</span>
+  </button>
+  <button mat-button color="primary" (click)="changeFilter('stats.movespeed')">
+    <strong *ngIf="currentFilter == 'stats.movespeed'">Speed</strong>
+    <span *ngIf="currentFilter != 'stats.movespeed'">Speed</span>
+  </button>
+  <button mat-button color="primary" (click)="changeFilter('name')">
+    <strong *ngIf="currentFilter == 'name'">Name</strong>
+    <span *ngIf="currentFilter != 'name'">Name</span>
+  </button>
+</div>
+<mat-accordion multi="true" *ngIf="champs.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let champ of champs">
+    <mat-expansion-panel-header class="mb-1">
+      {{ champ.name }}
+    </mat-expansion-panel-header>
+    <div class="mx-auto">
+      <a routerLink="/detail/{{champ.key}}">
+        <img [src]="champ.icon" class="mx-auto" [alt]="champ.name">
+      </a>
+    </div>
+    <p>{{ champ.description }}</p>
+    <p>Click on the image to view more details!</p>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator
+  #paginator
+  class="mt-1"
+  [length]="totalChampions"
+  [pageSize]="championsPerPage"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="onChangedPage($event, paginator)"
+  *ngIf="champs.length > 0 && !isLoading">
+</mat-paginator>
+
+<p class="info-text mat-body-1" *ngIf="champs.length <= 0 && !isLoading">No champions added yet!</p>
+<br>

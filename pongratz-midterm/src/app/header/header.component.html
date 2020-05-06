@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+      <span>
+        <ul class="nav-styles">
+          <li class="hor-li"><a routerLink="/home" routerLinkActive="active-link">Home</a></li>
+          <li class="hor-li"><a routerLink="/champions" routerLinkActive="active-link">Champions</a></li>
+        </ul>
+      </span>
+      <span class="spacer">
+      </span>
+      <span class="right-stuff">
+        <ul class="nav-styles">
+          <div *ngIf="userIsAuthenticated">
+            <li class="hor-li right-li small-text">{{ userId }}</li>
+            <li class="hor-li right-li"><p (click)="onLogout()">Logout</p></li>
+          </div>
+          <div *ngIf="!userIsAuthenticated">
+            <li class="hor-li right-li"><a routerLink="/login" routerLinkActive="active-link">Login</a></li>
+            <li class="hor-li right-li"><a routerLink="/signup" routerLinkActive="active-link">Signup</a></li>
+          </div>
+        </ul>
+      </span>
+  </mat-toolbar-row>
+</mat-toolbar>
