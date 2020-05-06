@@ -9,9 +9,6 @@ const userinputRoutes = require("./routes/userinput");
 
 const app = express();
 
-// old string
-// "mongodb+srv://devon:zHCfxtm7AvwJXNsK@midterm-j45ux.mongodb.net/Midterm"
-
 mongoose
   .connect(
     "mongodb://localhost:27017/pongratzMidterm", { useUnifiedTopology: true, useNewUrlParser: true }

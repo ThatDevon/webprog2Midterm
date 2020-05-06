@@ -38,7 +38,6 @@
         <p class="small-text">{{ uInput.rating }} / 10</p>
         <p class="word-wrap">{{uInput.comment}}</p>
       </div>
-      <!-- <p class="small-text text-right">{{ uInput.rating }} / 10</p> -->
       <div *ngIf="userIsAuthed && uInput.username == userId">
         <button mat-button color="warn" class="go-right" (click)="onDelete(uInput)">Delete</button>
         <br />
