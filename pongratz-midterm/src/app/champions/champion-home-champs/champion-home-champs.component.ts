@@ -29,6 +29,12 @@ export class ChampionHomeChampsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.onFilter('stats.armor');
+    setTimeout(() => {
+      if (this.allChamps.length == 0) {
+        this.isLoading = true;
+        this.championsService.initializeChampions();
+      }
+    }, 1000);
   }
 
   // Picks a random champion to be featured.
