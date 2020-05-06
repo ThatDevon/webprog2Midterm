@@ -8,4 +8,6 @@ router.get("/champions", ChampionController.champions);
 
 router.get("/search", ChampionController.championSearch);
 
+router.get("/init", ChampionController.init);
+
 module.exports = router;
