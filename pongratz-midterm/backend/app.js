@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+var assert = require('assert');
 
 const userRoutes = require("./routes/user");
 const championsRoutes = require("./routes/champion");
@@ -8,16 +9,19 @@ const userinputRoutes = require("./routes/userinput");
 
 const app = express();
 
+// old string
+// "mongodb+srv://devon:zHCfxtm7AvwJXNsK@midterm-j45ux.mongodb.net/Midterm"
+
 mongoose
   .connect(
-    "mongodb+srv://devon:zHCfxtm7AvwJXNsK@midterm-j45ux.mongodb.net/Midterm", { useUnifiedTopology: true, useNewUrlParser: true }
+    "mongodb://localhost:27017/pongratzMidterm", { useUnifiedTopology: true, useNewUrlParser: true }
   )
   .then(() => {
     console.log("Connected to database!");
   })
   .catch(() => {
     console.log("Connection failed!");
-  });
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

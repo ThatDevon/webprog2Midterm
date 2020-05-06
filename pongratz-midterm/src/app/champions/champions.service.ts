@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 
 import { Champion } from "./champion.model";
 import { environment } from "src/environments/environment";
+import { stringify } from "querystring";
 
 const BACKEND_URL = environment.apiUrl + "/champion/";
 
@@ -48,6 +49,14 @@ export class ChampionsService {
           champions: [...this.champions],
           championCount: transformedChampionData.maxChampions
         });
+      });
+  }
+
+  initializeChampions() {
+    this.http.get<{ message: string; }>(BACKEND_URL + "init")
+      .subscribe(resp => {
+        console.log(resp.message);
+        location.reload();
       });
   }
 
